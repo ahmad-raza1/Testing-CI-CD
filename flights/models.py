@@ -16,7 +16,7 @@ class Flight(models.Model):
 	duration = models.IntegerField()
 
 	def is_valid_flight(self):
-        return (self.origin != self.destination) and (self.duration >= 0)
+		return (self.origin != self.destination) and (self.duration >= 0)
 
 	def __str__(self):
 		return f"{self.id} - {self.origin} to {self.destination}"
@@ -29,4 +29,3 @@ class Passenger(models.Model):
 
 	def __str__(self):
 		return f"{self.first_name} {self.last_name}"
-		
