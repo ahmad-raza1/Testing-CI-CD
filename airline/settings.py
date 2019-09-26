@@ -82,6 +82,11 @@ DATABASES = {
         'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432',
+
+         # this gets you in-memory sqlite for tests, which is fast
+        'TEST': {
+            'ENGINE':'django.db.backends.sqlite3',
+        }
     }
 }
 
