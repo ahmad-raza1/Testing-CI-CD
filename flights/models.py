@@ -18,6 +18,20 @@ class Flight(models.Model):
 	def is_valid_flight(self):
 		return (self.origin != self.destination) and (self.duration >= 0)
 
+	# Add a method that raises "Validation errors" if the data is illogical.
+	def clean(self):
+		if self.origin == self.destination:
+		    raise ValidationError("Origin and destination must be different.")
+		elif self.duration < 1:
+		    raise ValidationError("Duration must be positive.")
+
+	# Call this method before trying to add data, overriding the default behavior of built-in `save`.
+	def save(self, *args, **kwargs):
+		self.clean()
+
+		# This syntax now calls Django's own "save" function, adding this data to the DB (if `clean` was ok).
+		super().save(*args, **kwargs)
+
 	def __str__(self):
 		return f"{self.id} - {self.origin} to {self.destination}"
 
