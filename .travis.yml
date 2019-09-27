@@ -5,19 +5,16 @@ branches:
   only:
     - master
 env:
-  - SECRET_KEY=!$di#hoy&_lh276zao1x^qm_%r)3d4-0dtq5&5ru*%1bd@!0zo
-  - ALLOWED_HOSTS=localhost
-  - DB_NAME=test
-  - DB_USER=postgres
-  - DB_PASSWORD=postgres
-  - DB_HOST=127.0.0.1
+  - DJANGO_VERSION=2.2.5
 
 services:
   - postgresql
 install:
+  - pip install -q Django==$DJANGO_VERSION
   - pip install -r requirements.txt
 before_script:
   - psql -c "CREATE DATABASE test;" -U postgres
+  - cp .env.example .env
   - python manage.py migrate
 script:
   - python mange.py test
