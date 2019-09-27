@@ -6,7 +6,6 @@ branches:
     - master
 env:
   - DJANGO_VERSION=2.2.5
-  - HEROKU_API_KEY=5fdd7bf5-e0f0-4e11-aa0d-bcaa455e5744
 services:
   - postgresql
 install:
@@ -21,7 +20,10 @@ script:
   - python manage.py test
 deploy:
   provider: heroku
-  api_key: $HEROKU_API_KEY
+  api_key:
+    secure: "5fdd7bf5-e0f0-4e11-aa0d-bcaa455e5744"
   app: airlineapp-testing-ci-cd
-  run: python manage.py migrate
-  on: 
+  run:
+    - python manage.py migrate
+    - python manage.py runserver
+  on: master
