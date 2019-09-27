@@ -24,6 +24,7 @@ deploy:
   app: airlineapp-testing-ci-cd
   run:
     - python manage.py migrate
+    - echo "from flights.models import Airport; a = Airport.objects.all(); a.delete()" | python manage.py shell
     - echo "import add_airports; add_airports.main()" | python manage.py shell
     - echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'pass')" | python manage.py shell
   on: master
