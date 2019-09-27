@@ -44,7 +44,7 @@ class ModelsTestCase(TestCase):
 
 
 class FlightsTestCase(TestCase):
-	
+
 	# ...same setUp and model testing as before...
 	def setUp(self):
 
