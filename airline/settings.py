@@ -80,6 +80,7 @@ WSGI_APPLICATION = 'airline.wsgi.application'
 HEROKU_ENV = config('HEROKU_ENV', default=False, cast=bool)
 
 if HEROKU_ENV is True:
+    DATABASES = {}
     DATABASES['default'] = dj_database_url.config(default=os.environ['DATABASE_URL'])
 
 else:
