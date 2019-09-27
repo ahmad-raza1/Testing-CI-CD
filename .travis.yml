@@ -14,7 +14,6 @@ install:
 before_script:
   - psql -c "CREATE DATABASE test;" -U postgres
   - cp .env.example .env
-  - python manage.py collectstatic --noinput
   - python manage.py migrate
 script:
   - python manage.py test
