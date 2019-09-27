@@ -20,7 +20,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: "5fdd7bf5-e0f0-4e11-aa0d-bcaa455e5744"
+    secure: $HEROKU_API_KEY
   app: airlineapp-testing-ci-cd
   run:
     - python manage.py migrate
