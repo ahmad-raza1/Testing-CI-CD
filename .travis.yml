@@ -6,7 +6,6 @@ branches:
     - master
 env:
   - DJANGO_VERSION=2.2.5
-
 services:
   - postgresql
 install:
