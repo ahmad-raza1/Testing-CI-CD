@@ -125,4 +125,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-django_heroku.settings(locals())
+# Activate django-heroku.
+if 'HEROKU_ENV' in os.environ:
+    django_heroku.settings(locals())
